@@ -1,0 +1,54 @@
+#description_block
+    div.row.short-inf
+        img.col-md-6(src= hotel.photo, alt='hotel photo')
+        div.card.col-md-6.description-card(data-tour-id= tour.code)
+            span
+                b Проїзд:
+                = " " + tour.type_transfer
+            span
+                b Дата:
+                = " " + tour.tourDate
+            span
+                b Кількість ночей:
+                = " " + tour.nights
+            span
+                b Клас готелю:
+                = " " + hotel.stars + " *"
+
+            span
+                b Наявні типи харчування:
+                for food in foods
+                    span= food.id_food
+
+            if tour.price_new
+                span.price-inf= tour.price_new + " грн"
+            else
+                span.price-inf= tour.price + " грн"
+
+            small ціна за 1 людину. *(початкова ціна)
+
+            button#open-statement.btn.btn-primary Оформити заяву
+    div
+        h3.tour-title= hotel.name_country + ", " + hotel.city+", "+hotel.name_hotel
+        p.description= hotel.description
+        if tour.program
+            h3.comment-title Програма туру
+            p.description= tour.program
+
+    button#open-comment.btn.btn-dark Залишити відгук
+    #comment-form.hidden
+        .form-row
+            .form-group.col-md-4
+                label(for='user-email') Email *
+                input#user-email.form-control(type='email', placeholder='Email')
+            .form-group.col-md-4
+                label(for='user') Ім'я *
+                input#user.form-control(type='text', placeholder='Ім`я')
+        .form-group
+            label(for='comment') Коментар *
+            textarea#comment.form-control(rows='3', cols='45', placeholder='Текст...')
+        button#add-comment.btn.btn-primary(data-hotel-id=tour.hotel_id) Залишити
+
+    h3.comment-title Коментарі
+    include comments.pug
+include document.pug

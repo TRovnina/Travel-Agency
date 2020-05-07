@@ -1,0 +1,40 @@
+// сторінка для  заповнення даних на тур
+#document.hidden
+    form(name='docForm', action='/buyTour?id='+tour.code, method='post')
+        h3 Заповніть форму
+        img.close_img(src="../public/images/close.png", alt='close')
+        .form-row
+            .form-group.col-md-4
+                label(for='surname') Прізвище *
+                input#surname.form-control(type='text', name='surname', placeholder='Іванов', required)
+            .form-group.col-md-1
+            .form-group.col-md-4
+                label(for='name') Ім'я *
+                input#name.form-control(type='text', name='name', placeholder='Іван', required)
+        .form-row
+            .form-group.col-md-4
+                label(for='email') Email *
+                input#email.form-control(type='email', name='email', pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$', placeholder='ivanov@gmail.com', required)
+            .form-group.col-md-1
+            .form-group.col-md-4
+                label(for='phone') Телефон *
+                input#phone.form-control(type='tel', name='phone', pattern='[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}', placeholder='099-657-98-90', required)
+        .form-row
+            .form-group.col-md-3
+                label(for='food') Тип їжі*
+                select#food.form-control(name='food', required)
+                    for f in foods
+                        option(value=f.id_food)= f.id_food + " (" + f.type_food + ")"
+            .form-group.col-md-1
+            .form-group.col-md-3
+                label(for='adults') Кількість дорослих *
+                input#adults.form-control(type='number', name='adults', min='1', required)
+            .form-group.col-md-1
+            .form-group.col-md-3
+                label(for='children') Кількість дітей *
+                input#children.form-control(type='number', min='0', name='children', required)
+        .form-group.col-md-11
+            label(for='notes') Коментар
+            textarea#notes.form-control(rows='4', cols='45', placeholder='Текст...')
+
+        button.btn.btn-primary(type='submit') Оформити

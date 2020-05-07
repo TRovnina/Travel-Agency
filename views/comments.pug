@@ -1,0 +1,23 @@
+#comments-block
+    - var n = 0;
+    - var id = 1;
+    - var len = comments.length / 5 + 1;
+    while n < comments.length
+        - var j = 0;
+        - var page = 'page'+ id++;
+        div.comments-page.hidden(id=page)
+            while j < 5 && n < comments.length
+                div.comment
+                    div.row.comment-head
+                        span.comment-user= comments[n].user
+                        span.comment-date= comments[n].comment_date
+                    p.comment-txt= comments[n].text
+                - j++
+                - n++
+
+    nav
+        ul.pagination.justify-content-center
+            - var i = 1;
+            while i < len
+                li.page-item.page-link(data-page=i)= i
+                - i++;

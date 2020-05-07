@@ -1,0 +1,18 @@
+table.table-tours
+    tr.head
+        th Дата
+        th Ночі
+        th Ціна(грн)
+        th Трансфер
+        th Оператор
+        th Перегляд туру
+    - var i = 0;
+    for tour in tours
+        tr
+            td= tour.tourDate
+            td= tour.nights
+            td= tour.price
+            td= tour.type_transfer
+            td= tour.name_operator
+            td
+                button.btn.btn-outline-primary.tour-view(data-tour-id=tour.code) Перегляд

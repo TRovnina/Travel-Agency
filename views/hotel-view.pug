@@ -1,0 +1,40 @@
+#description_block
+    div.row.short-inf
+        img.col-md-6(src= hotel.photo, alt='hotel photo')
+        div.card.col-md-6.description-card(data-hotel-id= hotel.code)
+            h3.hotel-title= hotel.name_hotel
+            span
+                b Країна:
+                = " " + hotel.name_country + ", " + hotel.city
+            span
+                b Клас готелю:
+                = " " + hotel.stars + " *"
+
+            span
+                b Наявні типи харчування:
+                for food in foods
+                    span= food.id_food
+
+    div
+        p.description= hotel.description
+
+    h3.comment-title Доступні тури
+    include hotel-tours.pug
+
+    button#open-comment.btn.btn-dark Залишити відгук
+    #comment-form.hidden
+        .form-row
+            .form-group.col-md-4
+                label(for='user-email') Email *
+                input#user-email.form-control(type='email', placeholder='Email')
+            .form-group.col-md-4
+                label(for='user') Ім'я *
+                input#user.form-control(type='text', placeholder='Ім`я')
+        .form-group
+            label(for='comment') Коментар *
+            textarea#comment.form-control(rows='3', cols='45', placeholder='Текст...')
+        button#add-comment.btn.btn-primary(data-hotel-id=hotel.id_hotel) Залишити
+
+    h3.comment-title Коментарі
+    #comments-block
+        include comments.pug

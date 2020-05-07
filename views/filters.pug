@@ -1,0 +1,63 @@
+// фільтрація
+#filter-nav.col-md-2.col-xs-12.col-sm-4
+    span.title Фільтрація
+    div.filters(data-filter-id=category)
+        .form-group
+            label.f-title(for='filter-country') Країна
+            select#filter-country.form-control
+                option(value='', selected='')
+                for country in countries
+                    option(value=country.id_country)= country.name_country
+        if transfers
+            .form-group
+                label.f-title(for='filter-transfer') Трансфер
+                select#filter-transfer.form-control
+                    option(value='', selected='')
+                    for transfer in transfers
+                        option(value=transfer.id_transfer)= transfer.type_transfer
+        if tours
+            .form-group
+                label.f-title(for='filter-date') Оберіть дати
+                #filter-date
+                    div
+                        label.f-title(for='f-dateFrom') Від:
+                        br
+                        input#f-dateFrom.form-control(type='date', name='calendar')
+                    div
+                        label.f-title(for='f-dateTo') До:
+                        br
+                        input#f-dateTo.form-control(type='date', name='calendar')
+        if operators
+            .form-group
+                label.f-title(for='filter-operator') Туроператор
+                select#filter-operator.form-control
+                    option(value='', selected='')
+                    for operator in operators
+                        option(value=operator.id_operator)= operator.name_operator
+        .form-group
+            label.f-title(for='filter-food') Тип харчування
+            #filter-food
+                for food in foods
+                    input#food.id_food(type='checkbox', name='food', value=food.id_food)
+                    label(for=food.id_food)=  food.id_food + " (" + food.type_food + ")"
+                    br
+        .form-group
+            label.f-title(for='filter-hotel') Категорія готелю
+            #filter-hotel
+                input#hotel1(type='checkbox', name='hotel', value='5')
+                label(for='hotel1')  5*
+                br
+                input#hotel2(type='checkbox', name='hotel', value='4')
+                label(for='hotel2')  4*
+                br
+                input#hotel3(type='checkbox', name='hotel', value='3')
+                label(for='hotel3')  3*
+                br
+                input#hotel4(type='checkbox', name='hotel', value='2')
+                label(for='hotel4')  2*
+                br
+                input#hotel5(type='checkbox', name='hotel', value='1')
+                label(for='hotel5')  1*
+                br
+        button#use-filters.btn.btn-secondary Застосувати
+        button#clear-filters.btn.btn-secondary Скинути

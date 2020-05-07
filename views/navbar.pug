@@ -1,0 +1,17 @@
+// верхня панель з меню, яка завжди закріплена вгорі
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a.navbar-brand(href='/')
+        img.logo(src='../public/images/logo.png', alt='Logo')
+    div
+        a.navbar-brand(href='/')
+            span.title Around the world
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarNavAltMarkup.collapse.navbar-collapse
+            br
+            ul.navbar-nav.mr-auto
+                li#href_tours.nav-link Пошук туру
+                    span.sr-only(current)
+                li#href_hot.nav-link Горящі тури
+                li#href_hotels.nav-link Готелі
+                li#href_about.nav-link Про нас

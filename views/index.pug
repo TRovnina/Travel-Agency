@@ -1,0 +1,72 @@
+doctype html
+html(lang='uk')
+    include header.pug
+    body
+        include navbar.pug
+        #main_block.content
+            #home
+                img(src='../public/images/panorama.jpg', alt='panorama')
+                #operators-block.carousel.slide.carousel-multi-item(data-ride='carousel')
+                    h3 Туроператори
+                    // стрілки контролю
+                    a.carousel-control-prev(href='#operators-block', role='button', data-slide='prev')
+                        img.carousel-control-prev-icon(src='../public/images/left.png', alt='Previous')
+                    a.carousel-control-next(href='#operators-block', role='button', data-slide='next')
+                        img.carousel-control-next-icon(src='../public/images/right.png', alt='Next')
+                    // картки туроператорів
+                    .carousel-block(role='listbox')
+                        // перший слайд
+                        .carousel-item.active
+                            - var i = 0;
+                            while i < operators.length && i < 3
+                                .col-md-4(style='float:left')
+                                    .card.p-3
+                                        h4.card-title= operators[i].name_operator
+                                        hr
+                                        span
+                                            b Email:
+                                            = " " + operators[i].email
+                                        span
+                                            b Телефон:
+                                            = " " + operators[i].phone
+                                - i++
+                        // інші слайди
+                        while i < operators.length
+                            .carousel-item
+                                -var j = 0;
+                                while i < operators.length && j < 3
+                                    .col-md-4(style='float:left')
+                                        .card.p-3
+                                            h4.card-title= operators[i].name_operator
+                                            hr
+                                            span
+                                                b Email:
+                                                = " " + operators[i].email
+                                            span
+                                                b Телефон:
+                                                = " " + operators[i].phone
+                                    - j++
+                                    - i++
+                div
+                    h3 Чому ми?
+                    table
+                        tr
+                            td.icon
+                                img(src='../public/images/24_7.png', alt='24/7')
+                            td.txt
+                                p Дбаємо про клієнтів 24/7. Якщо у вас виникли питання або складності в подорожі, ми завжди поруч!
+                            td.icon
+                                img(src='../public/images/world.png', alt='world')
+                            td.txt
+                                p Пропонуємо тури майже в кожний куточок світу. Всі можливі варіанти відпочинку можна підібрати у нас!
+                        tr
+                            td.icon
+                                img(src='../public/images/diagram.png', alt='diagram')
+                            td.txt
+                                p У компанії немає боргів, тому туристи гарантовано отримують відпочинок, за який заплатили.
+                            td.icon
+                                img(src='../public/images/price.png', alt='price')
+                            td.txt
+                                p На сайті завжди відображаються актуальні ціни.
+        include footer.pug
+        include scripts.pug

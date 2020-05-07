@@ -1,0 +1,14 @@
+#hotels_block.row
+    include filters.pug
+    #hotels.row.col-md-10
+        for hotel in hotels
+            .hotel_card.card(data-hotel-id= hotel.id_hotel)
+                img.img-fluid.hotel-img(src=hotel.photo, alt='photo')
+                .stars.row
+                    - var n = 0;
+                    while n < hotel.stars
+                        img(src='../public/images/star.png', alt='*')
+                        - n++
+                span.hotel-title= hotel.name_hotel
+                span
+                    b= hotel.name_country + ", "+ hotel.city

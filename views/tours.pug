@@ -1,0 +1,28 @@
+#tours_block.row
+    include filters.pug
+    #tours.row.col-md-10.col-sm-8
+        for tour in tours
+            .tour_card.card(data-tour-id= tour.code)
+                .date_info
+                    span.tour-dates= tour.tourDate
+                    br
+                    span= "Ночей " + tour.nights
+                img.img-fluid.tour-img(src=tour.photo, alt='photo')
+                div.block-row
+                    .stars.row
+                        - var n = 0;
+                        while n < tour.stars
+                            img(src='../public/images/star.png', alt='*')
+                            - n++
+                    .price
+                        if tour.price_new
+                            span.old= tour.price + " грн"
+                            br
+                            span.new= tour.price_new + " грн"
+                        else
+                            span= tour.price + " грн"
+                        br
+                        small ціна за 1 людину
+                span.tour-title= tour.name_hotel
+                span
+                    b= tour.name_country + ", "+ tour.city
